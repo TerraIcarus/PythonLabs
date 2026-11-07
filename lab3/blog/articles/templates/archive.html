@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Архив статей</title>
+</head>
+
+<body>
+<div class="header">
+    <img src="{{ STATIC_URL }}/static/logo.svg" class="logo">
+</div>
+
+<div class="archive">
+    {% for post in posts %}
+    <div class="one-post">
+    <h2 class="post-title">
+         Тип расхода: {{ post.expense_type }}
+    </h2>
+
+    <div class="article-info">
+        <div class="article-author">
+            Сотрудник: {{ post.employee.username }}
+        </div>
+
+        <div class="article-created-date">
+            Дата: {{ post.purchase_date }}
+        </div>
+    </div>
+
+    <p class="article-text">
+        Отдел: {{ post.department }}
+    </p>
+
+    <p>
+        Сумма: {{ post.amount }}
+    </p>
+
+    <p>
+        Номер телефона: {{ post.receipt_number }}
+    </p>
+</div>
+{% endfor %}
+</div>
+
+</body>
+</html>
