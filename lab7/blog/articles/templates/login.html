@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/expense.css">
+    <meta charset="UTF-8">
+    <title>Авторизация пользователя</title>
+</head>
+
+<body class="article">
+
+<div class="header">
+    <img src="{{ STATIC_URL }}/static/logo.svg" class="logo">
+</div>
+
+<div class="login">
+
+    <h1>Вход в систему</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <p>
+            <label>Логин:</label><br>
+            <input type="text" name="username" required>
+        </p>
+
+        <p>
+            <label>Пароль:</label><br>
+            <input type="password" name="password" required>
+        </p>
+
+        <button type="submit">Войти</button>
+
+    </form>
+
+    <div class="all-posts">
+        <a href="{% url 'archive' %}">Все записи</a>
+    </div>
+
+</div>
+
+</body>
+</html>

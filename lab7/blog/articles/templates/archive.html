@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script src="{{ STATIC_URL }}/static/js/helloworld.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/expense.css">
+    <meta charset="UTF-8">
+    <title>Архив статей</title>
+</head>
+
+<body class="archive-page">
+
+<div class="header">
+    <div class="register">
+        <h2><a class="article-text" href="{% url 'register' %}">Регистрация</a></h2>
+    </div>
+
+    <img src="{{ STATIC_URL }}/static/logo.svg" class="logo">
+</div>
+
+<div class="archive">
+
+    {% for post in posts %}
+
+   <div class="one-post">
+
+    <h2 class="post-title">
+        <a href="{% url 'get_expense' post.id %}">
+            Тип расхода: {{ post.expense_type }}
+        </a>
+    </h2>
+
+    <div class="article-info">
+
+        <div class="article-author">
+            Сотрудник: {{ post.employee.username }}
+        </div>
+
+        <div class="article-created-date">
+            Дата покупки: {{ post.purchase_date }}
+        </div>
+
+    </div>
+
+    <div class="article-department">
+        Отдел: {{ post.department }}
+    </div>
+
+    <div class="article-amount">
+        Сумма покупки: {{ post.amount }}
+    </div>
+
+    <div class="article-receipt">
+        Номер телефона: {{ post.receipt_number }}
+    </div>
+
+    <button class="fold-button">
+        свернуть
+    </button>
+
+</div>
+
+    {% endfor %}
+
+</div>
+<script src="{{ STATIC_URL }}/static/js/fold-post.js"></script>
+</body>
+</html>
