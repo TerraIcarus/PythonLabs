@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/expense.css">
+    <meta charset="UTF-8">
+    <title>Регистрация пользователя</title>
+</head>
+
+<body class="article">
+
+<div class="header">
+    <img src="{{ STATIC_URL }}/static/logo.svg" class="logo">
+</div>
+
+<div class="archive">
+
+    <h1>Регистрация пользователя</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if success %}
+        <p class="success">{{ success }}</p>
+        <p>
+            <a href="{% url 'archive' %}">Перейти к списку расходов</a>
+        </p>
+    {% else %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <p>
+                <label>Логин:</label><br>
+                <input type="text" name="username"
+                       value="{{ username }}" required>
+            </p>
+
+            <p>
+                <label>Электронная почта:</label><br>
+                <input type="email" name="email"
+                       value="{{ email }}" required>
+            </p>
+
+            <p>
+                <label>Пароль:</label><br>
+                <input type="password" name="password" required>
+            </p>
+
+            <button type="submit">Зарегистрироваться</button>
+
+        </form>
+
+    {% endif %}
+
+    <div class="all-posts">
+        <a href="{% url 'archive' %}">Все записи</a>
+    </div>
+
+</div>
+
+</body>
+</html>

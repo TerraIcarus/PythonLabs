@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/expense.css">
+    <title>Учет внутриофисных расходов — новая покупка</title>
+</head>
+
+<body>
+    <div class="content">
+
+        <h1>Оформить покупку</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="department"
+                placeholder="Название отдела"
+                value="{{ form.department }}"
+            >
+
+            <input
+                type="text"
+                name="expense_type"
+                placeholder="Вид расхода"
+                value="{{ form.expense_type }}"
+            >
+
+            <input
+                type="number"
+                step="0.01"
+                name="amount"
+                placeholder="Сумма покупки"
+                value="{{ form.amount }}"
+            >
+
+            <input
+                type="date"
+                name="purchase_date"
+                value="{{ form.purchase_date }}"
+            >
+
+            <input
+                type="text"
+                name="receipt_number"
+                placeholder="Номер телефона"
+                value="{{ form.receipt_number }}"
+            >
+
+            <input type="submit" value="Сохранить">
+        </form>
+
+        {{ form.errors }}
+
+    </div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/expense.css">
+    <meta charset="UTF-8">
+    <title>Информация о покупке</title>
+</head>
+
+<body class="article">
+
+<div class="header">
+    <div class="register">
+        <h2><a class="article-text" href="{% url 'register' %}">Регистрация</a></h2>
+    </div>
+
+    <img src="{{ STATIC_URL }}/static/logo.svg" class="logo">
+</div>
+
+<div class="archive">
+
+    <div class="one-post">
+
+        <h2 class="post-title">
+            Информация о покупке
+        </h2>
+
+        <div class="article-info">
+
+            <div class="article-author">
+                Сотрудник: {{ post.employee.username }}
+            </div>
+
+            <div class="article-created-date">
+                Дата покупки: {{ post.purchase_date }}
+            </div>
+
+        </div>
+
+        <p class="article-text">
+            Вид расхода: {{ post.expense_type }}
+        </p>
+
+        <p>
+            Отдел: {{ post.department }}
+        </p>
+
+        <p>
+            Сумма покупки: {{ post.amount }}
+        </p>
+
+        <p>
+            Номер телефона: {{ post.receipt_number }}
+        </p>
+
+    </div>
+
+    <a href="{% url 'archive' %}">Вернуться к списку расходов</a>
+
+</div>
+
+</body>
+</html>
